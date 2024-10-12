@@ -1,0 +1,25 @@
+notes 
+
+Start Method:
+This gets everything ready and starts the server.
+
+Security Middlewares:
+These are like locks and alarms to keep the app safe from hackers.
+
+Standard Middlewares:
+These handle basic tasks like keeping logs (recording what happens) or reading data sent by users.
+
+Route Middlewares:
+These handle specific tasks for different parts of the app, like deciding what to do when someone visits a particular page.
+
+Global Error Handler:
+This catches any mistakes or problems in the app and tries to fix or report them.
+
+Start Server:
+This turns on the app so people can use it.
+
+Create Socket.IO:
+This adds live features, like instant chats or updates without refreshing the page.
+
+Start HTTP Server:
+This makes the app listen for requests from users, like answering a phone call.
