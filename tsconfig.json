@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    // Specify ECMAScript target version
+    "target": "es2016",
+    // Specify module code generation
+    "module": "commonjs",
+    // Specify library files to be included in the compilation
+    "lib": ["DOM", "ES2015"],
+    // Base directory to resolve non-absolute module names
+    "baseUrl": ".",
+    // Output directory for compiled files
+    "outDir": "./build",
+    // Root folder within your source files
+    "rootDir": "src",
+    // Enable all strict type checking options
+    "strict": true,
+    // Raise error on expressions and declarations with an implied 'any' type
+    "noImplicitAny": true,
+    // Report errors on unused locals
+    "noUnusedLocals": false,
+    // Report errors on unused parameters
+    "noUnusedParameters": false,
+    // Specify module resolution strategy
+    "moduleResolution": "node",
+    // Enable interoperability between CommonJS and ES Modules
+    "esModuleInterop": true,
+    // Generates corresponding .map file
+    "sourceMap": true,
+    // Enable experimental support for TC39 stage 2 draft decorators
+    "experimentalDecorators": true,
+    // Emit design-type metadata for decorated declarations
+    "emitDecoratorMetadata": true,
+    // Enforces consistent casing in file names
+    "forceConsistentCasingInFileNames": true,
+    // Allow default imports from modules with no default export
+    "allowSyntheticDefaultImports": true,
+    // Stylize errors and messages using color and context
+    "pretty": true,
+    // Enable importing .json files
+    "resolveJsonModule": true
+  }
+}
