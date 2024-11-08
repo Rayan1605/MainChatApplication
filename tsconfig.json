@@ -37,6 +37,18 @@
     // Stylize errors and messages using color and context
     "pretty": true,
     // Enable importing .json files
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "plugins": [
+      {"transform": "typescript-transform-paths"},
+      {"transform": "typescript-transform-paths", "afterDeclarations": true},
+    ],
+    "paths": {
+      "@global/*": ["src/global/*"],
+      "@services/*": ["src/services/*"],
+      "@socket/*": ["src/sockets/*"],
+      "@worker/*": ["src/workers/*"],
+      "@root/*": ["src/*"]
+    }
+
   }
 }
