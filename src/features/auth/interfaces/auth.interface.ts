@@ -1,7 +1,8 @@
 import { Document} from "mongoose";
 import { ObjectId} from "mongodb";
+import { IUserDocument} from "@root/features/user/models/user.interface";
 
- declare global {
+declare global {
      //
      namespace Express {
          // interface Request  is used to add a new property to the Request object
@@ -57,3 +58,7 @@ import { ObjectId} from "mongodb";
     export interface ILoginData {
      value?: string | IAuthDocument;
     }
+
+export interface IAuthJob {
+    value?: string | IAuthDocument | IUserDocument;
+}

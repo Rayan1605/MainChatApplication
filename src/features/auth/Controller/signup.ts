@@ -11,7 +11,10 @@ import {uploads} from "@root/globels/cloudinary-upload";
 import HTTP_STATUS from "http-status-codes";
 import {UserCache} from "@services/redis/user.cache";
 import {IUserDocument} from "@root/features/user/models/user.interface";
-
+//Delete properties from an object
+import { omit} from 'lodash'
+import {authQueue} from "@services/queues/auth.queue";
+import {userQueue} from "@services/queues/user.queue";
 const userCache: UserCache = new UserCache();
 
 export class Signup {
@@ -43,12 +46,23 @@ export class Signup {
      if (!result?.public_id) {
          throw new BadRequestError("Error occurred: File upload failed. Try again");
      }
+
+
      // Add to redis cache
    const userDataForCache: IUserDocument = Signup.prototype.userData(authData, userObjectId);
    userDataForCache.profilePicture = `https://res/cloudinary.com/${process.env.CLOUD_NAME}/image/upload/v${result.version}/${result.public_id}`;
    await userCache.saveUserToCache(`${userObjectId}`, uid, userDataForCache);
 
-     res.status(HTTP_STATUS.CREATED).json({message: "User created successfully", authData});
+   //Add to Database
+        // We don't want to save the password in the database so we omit it
+   omit(userDataForCache, ['_Id', 'username', 'email','avatarColor', 'password']);
+   //This line adds a job to authQueue to insert a user into a database, specified by 'addAuthuserToDb'.
+        // It passes userDataForCache, which excludes sensitive fields, as data for the job.
+        // Job queues enable asynchronous processing for efficient task handling, such as database operations.
+   authQueue.addAuthUserJob('addAuthuserToDb', { value: userDataForCache})
+        userQueue.addUserJob('addUserJob', { value: userDataForCache})
+
+        res.status(HTTP_STATUS.CREATED).json({message: "User created successfully", authData});
 
     }
 

@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@bull-board/express": "^5.14.2",
+    "@bull-board/ui": "^5.14.2",
     "@socket.io/redis-adapter": "^8.2.1",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "bull": "^4.12.2",
     "bullmq": "^5.1.10",
     "bunyan": "^1.8.15",
     "cloudinary": "^2.0.1",
@@ -39,6 +42,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/bull": "^4.10.0",
     "@types/bunyan": "^1.8.11",
     "@types/compression": "^1.7.5",
     "@types/cookie-session": "^2.0.47",
