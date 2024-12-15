@@ -1,26 +1,25 @@
 import mongoose from "mongoose";
-import { config } from "./config"
 import Logger from "bunyan";
-//export is like saying I have to share my robot
-// default is basically saying this is my special robot and if you ask me for one with telling me which one then you get this one
+import {config} from "@root/config";
+import {redisConnection} from "@services/redis/redis.connection";
 
-const log: Logger = config.createLogger('database');
+
+const log: Logger = config.createLogger('setupDatabase');
 export default () => {
 
     const connect = () => {
         //Returning a promise so we will use then and catch
-    mongoose.connect(`${config.DATABASE_URL!}`, {
+    mongoose.connect("mongodb://localhost:27017/chattyApp-Backend", {
 
     }).then(() => {
-      log.info("Successfully connected to database");
+      console.log("Successfully connected to database");
+      redisConnection.connect();
     }).catch((error) => {
-      log.info("Error connecting to database: ", error);
+      console.log("Error connecting to database: ", error);
       return process.exit;
     })
-
     }
     connect();
 
-    mongoose.connection.on('disconnected', connect)
-
+    mongoose.connection.on("disconnected", connect);
 };
