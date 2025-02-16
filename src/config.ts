@@ -32,6 +32,7 @@ class Config {
         this.CLIENT_URL = process.env.CLIENT_URL || "";
         this.NODE_ENV = process.env.NODE_ENV || "";
         this.REDIS_HOST = process.env.REDIS_HOST || "";
+        this.CLOUD_NAME = process.env.CLOUD_NAME || "";
         this.CLOUD_API_KEY = process.env.CLOUD_API_KEY || "";
         this.CLOUD_API_SECRET = process.env.CLOUD_API_SECRET || "";
 
