@@ -3,7 +3,7 @@ import {IUserDocument} from "@root/features/user/models/user.interface";
 
 class UserService {
     public async addUserData(data: IUserDocument): Promise<void> {
-        await UserModel.create(data);
+        await .create(data);
     }
 
 }
