@@ -8,7 +8,7 @@ import {config} from "@root/config";
 class Application {
     public initialize(): void {
         this.loadConfig();
-        const app = express(); // create express app
+        const app = (); // create express app
         const server:ChattyServer = new ChattyServer(app); // create server
          setupDatabase(); // setup database
         server.start();// start server
