@@ -14,7 +14,10 @@ import {ServerError} from "src/globels/error-handler";
 import {config} from "@root/config";
 
 const log: Logger = config.createLogger('redisConnection');
-
+export class UserCache extends BaseCache {
+    constructor() {
+        super('userCache');
+    }
 // key and userId helping to identify and createdUser providing the actual data to be saved.
     public async saveUserToCache(key: string, userId: string, createdUser: IUserDocument):Promise<void>{
     const createdAt = new Date();
