@@ -19,7 +19,7 @@ export class UserCache extends BaseCache {
         super('userCache');
     }
 // key and userId helping to identify and createdUser providing the actual data to be saved.
-    public  saveUserToCache(key: string, userId: string, createdUser: IUserDocument):Promise<void>{
+    public async saveUserToCache(key: string, userId: string, createdUser: IUserDocument):Promise<void>{
     const createdAt = new Date();
     const {
         _id,
