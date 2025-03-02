@@ -16,7 +16,7 @@ class AuthService {
     }
     // We are using the findOne method to find the first document that matches the query and we are using the exec method to execute the query
     // we are looking in MongoDB for the user or email
-    const user: IAuthDocument = await AuthModel.findOne(query).exe() as IAuthDocument;
+    const user: IAuthDocument = await AuthModel.findOne(query).exec() as IAuthDocument;
     return user;
     }
 
