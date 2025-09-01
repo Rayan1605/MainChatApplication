@@ -17,7 +17,7 @@ export class Update {
   public async password(req: Request, res: Response): Promise<void> {
     const { currentPassword, newPassword, confirmPassword } = req.body;
     if (newPassword !== confirmPassword) {
-      throw new BadRequestError('Passwords do not match. Please reenter.');
+      throw new BadRequestError('Passwords do not match. Please re-enter.');
     }
     const existingUser: IAuthDocument = await authService.getAuthUserByUsername(req.currentUser!.username);
     const passwordsMatch: boolean = await existingUser.comparePassword(currentPassword);
