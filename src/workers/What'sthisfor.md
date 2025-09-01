@@ -1,1 +1,0 @@
-"worker" refers to a background process or thread that runs independently of the main application flow. Workers are used to perform tasks that are time-consuming, resource-intensive, or need to be executed asynchronously, without blocking the main application's

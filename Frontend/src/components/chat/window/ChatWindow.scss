@@ -1,0 +1,104 @@
+.chat-window-container {
+  display: grid;
+  grid:
+    'message-header'
+    'message-container';
+  height: 100%;
+  min-height: 0;
+
+  .chat-title {
+    grid-area: message-header;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    height: 60px;
+    border-bottom: 1px solid var(--white-4);
+    margin-top: 0;
+    padding: 0 20px;
+    background: var(--white-1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    &-avatar {
+      grid-row: span 2;
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+      align-self: center;
+    }
+
+    &-items {
+      display: grid;
+      grid-template-areas:
+        'name'
+        'active';
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content;
+      padding: 10px 0 10px 15px;
+      align-self: center;
+
+      .chat-name {
+        grid-area: name;
+        font-weight: 700;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: var(--black-2);
+        margin-bottom: 2px;
+      }
+
+      .user-not-online {
+        padding-top: 10px;
+      }
+
+      .chat-active {
+        grid-area: active;
+        font-size: 13px;
+        color: var(--primary-1);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .chat-window {
+    grid-area: message-container;
+    display: grid;
+    grid-template-areas:
+      'message-body'
+      'image-preview'
+      'message-form';
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content 70px;
+    height: calc(100vh - 130px);
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    &-message {
+      grid-area: message-body;
+      height: 100%;
+      overflow-y: auto;
+      min-height: 0;
+      padding: 10px 0;
+    }
+
+    &-input {
+      grid-area: message-form;
+      min-height: 70px;
+      position: relative;
+      background: var(--white-1);
+      border-top: 1px solid var(--white-4);
+      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    app-image-preview {
+      grid-area: image-preview;
+      width: 100%;
+    }
+  }
+}
+
+app-container {
+  top: 49%;
+  position: absolute;
+}
